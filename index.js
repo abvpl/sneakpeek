@@ -9,29 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
 app.use(cors());
-console.log("helloworld");
-
-app.get('/jayson', function (req, res) {
-    console.log("at Hello Jayson GET");
-    res.send("GET method served");
-});
-
-app.post('/jayson', function (r, s) {
-    console.log("at Hello Jayson POST");
-    s.send("POST method served");
-});
-
-app.use("/abhi", function (r, s) {
-    console.log("Welcome",r.body);
-    let result = {
-        "code": 1,
-        "status": "success"
-    }
-    s.send(result);
-});
-
-
-app.post('/sendemail', (req, res, next) => {
+app.use('/', (req, res)=> {
+    res.send("<h1>!!WELCOME TO SNEAKPEEK!!</h>")
+})
+app.post('/sendX', (req, res, next) => {
     console.log(req.body)
     if (req.body.tokenauth == "abrxtw") {
         var senderDetails = req.body.senderData;
@@ -81,5 +62,5 @@ app.post('/sendemail', (req, res, next) => {
 
 const port = process.env.PORT || 8080;
 http.createServer(app).listen(port, function () {
-    console.log("Example app listening at http://%s:%s", "localhost", port);
+    console.log("SNEAKPEEK app listening at http://%s:%s", "localhost", port);
 });
